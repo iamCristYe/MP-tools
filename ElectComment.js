@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         ElectComment
 // @namespace    https://github.com/iamCristYe/MP-tools
-// @version      6.0
+// @version      7.0
 // @description  Automatically elect new comments.
 // @author       Crist
 // @match        https://mp.weixin.qq.com/misc/appmsgcomment?action=list_latest_comment*
@@ -22,31 +22,19 @@
     }
 
     function Elect() {
-        switch (document.getElementsByClassName('jsNewElect').length) {
-            case 0:
-                console.log("No comment to be elected.");
-
-                setInterval(() => {
-                    if (document.getElementById("js_div_newnum").style.display == "block") {
-                        location.reload();
-                    }
-                }, 1000);
-
-                setTimeout(() => {
-                    location.reload();         //in case of no activity log out
-                }, 800000);
-
-                break;
-            case 1:
-                eventFire(document.getElementsByClassName('jsNewElect')[0], 'click');
-                console.log("All comments elected.");
-                break;
-            default:
-                eventFire(document.getElementsByClassName('jsNewElect')[0], 'click');
-                window.setTimeout(Elect, 2000);
+        if (document.getElementsByClassName('jsNewElect').length) {                                         //comment(s) to be elcted exist(s)
+            eventFire(document.getElementsByClassName('jsNewElect')[0], 'click');
+            window.setTimeout(Elect, 2000);
+        } else {
+            console.log("No comment to be elected.");
+            setInterval(() => {
+                if (document.getElementById("js_div_newnum").style.display == "block") location.reload();   //new comment appears
+            }, 1000);
+            setTimeout(() => {
+                location.reload();                                                                          //in case of no activity log out
+            }, 800000);
         }
     }
 
     setTimeout(() => { Elect(); }, 5000);
-
 })();
