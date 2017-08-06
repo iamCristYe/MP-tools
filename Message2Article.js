@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Message2Article
 // @namespace    https://github.com/iamCristYe/MP-tools
-// @version      2.0
+// @version      3.0
 // @description  Automatically build article from messages.
 // @author       Crist
 // @match        https://mp.weixin.qq.com/cgi-bin/message?*
@@ -48,7 +48,7 @@
             if (tmp.Message === "") tmp.Message = "(expired image)";
 
             //get image URL
-            if (MessageArray[index].getElementsByClassName("appmsgSendedItem")[0] !== null)
+            if (MessageArray[index].getElementsByClassName("appmsgSendedItem")[0] != null)
                 tmp.pic = "https://mp.weixin.qq.com" + MessageArray[index].getElementsByClassName("appmsgSendedItem")[0].getElementsByTagName("a")[0].getAttribute("href");
 
             resultArray.push(tmp);
@@ -74,7 +74,7 @@
         for (var index = 0; index < resultArray.length; index++) {
             if (resultArray[index].UserID != lastUser) newHTML += "------<br>"; lastUser = resultArray[index].UserID;
 
-            if (resultArray[index].pic !== null) newHTML += "<img src=" + resultArray[index].pic + "><br>";
+            if (resultArray[index].pic != null) newHTML += "<img src=" + resultArray[index].pic + "><br>";
             else newHTML += resultArray[index].Message + "<br>";
 
         }
