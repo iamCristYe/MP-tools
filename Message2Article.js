@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Message2Article
 // @namespace    https://github.com/iamCristYe/MP-tools
-// @version      4.0
+// @version      5.0
 // @description  Automatically build article from messages.
 // @author       Crist
 // @match        https://mp.weixin.qq.com/cgi-bin/message?*
@@ -20,16 +20,28 @@
         if (!results[2]) return '';
         return decodeURIComponent(results[2].replace(/\+/g, " "));
     }
+
     if (getParameterByName("count") != "1000") {
         window.location.href = "https://mp.weixin.qq.com/cgi-bin/message?t=message/list&count=1000&day=7&token=" + getParameterByName('token');
     }
 
-    function Message2Article() {
+    function InsertPrompt() {
         clearInterval(myInterval);
 
+        var MessageCount = [].slice.call(document.getElementsByClassName("message_item")).length;
+
+        for (var index = 0; index < MessageCount; index++) {
+            var div = document.createElement('div');
+            div.innerHTML = '<div style="text-align:center;cursor:pointer;" onClick="GenerateHTML(' + index + ')">汇总以上内容</div>';
+            document.getElementsByClassName("message_item")[index].parentNode.insertBefore(div, document.getElementsByClassName("message_item")[index].nextSibling);
+
+        }
+    }
+
+    function GenerateHTML(DesiredMessageLength) {
         var MessageArray = [].slice.call(document.getElementsByClassName("message_item"));
         var resultArray = [];
-        for (var index = 0; index < MessageArray.length; index++) {
+        for (var index = 0; index <= DesiredMessageLength; index++) {
             var tmp = {};
 
             //get UserID
@@ -68,8 +80,6 @@
             }
         });
 
-        console.log(resultArray);
-
         var newHTML = ""; var lastUser = resultArray[0].UserID;
         for (var index = 0; index < resultArray.length; index++) {
             if (resultArray[index].UserID != lastUser) newHTML += "------<br>"; lastUser = resultArray[index].UserID;
@@ -83,5 +93,5 @@
         win.document.body.innerHTML = newHTML;
     }
 
-    var myInterval = setInterval(() => { Message2Article(); }, 3000);
+    var myInterval = setInterval(() => { InsertPrompt(); }, 2000); //wait till all messages loaded
 })();
