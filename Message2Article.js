@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Message2Article
 // @namespace    https://github.com/iamCristYe/MP-tools
-// @version      6.0
+// @version      7.0
 // @description  Automatically build article from messages.
 // @author       Crist
 // @match        https://mp.weixin.qq.com/cgi-bin/message?*
@@ -93,5 +93,5 @@
         }
     }
 
-    var myInterval = setInterval(() => { InsertPrompt(); }, 2000); //wait till all messages loaded
+    var myInterval = setInterval(() => { InsertPrompt(); }, 5000); //wait till all messages loaded
 })();
