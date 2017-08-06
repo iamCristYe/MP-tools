@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         ElectComment
 // @namespace    https://github.com/iamCristYe/MP-tools
-// @version      4.0
+// @version      5.0
 // @description  Automatically elect new comments.
 // @author       Crist
 // @match        https://mp.weixin.qq.com/misc/appmsgcomment?action=list_latest_comment*
@@ -33,8 +33,8 @@
                 }, 1000);
 
                 setInterval(() => {
-                    location.reload();         //in case of no activity log out          
-                }, 900000);
+                    location.reload();         //in case of no activity log out
+                }, 800000);
 
                 break;
             case 1:
