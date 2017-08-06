@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Message2Article
 // @namespace    https://github.com/iamCristYe/MP-tools
-// @version      10.0
+// @version      11.0
 // @description  Automatically build article from messages.
 // @author       Crist
 // @match        https://mp.weixin.qq.com/cgi-bin/message?*
@@ -82,10 +82,10 @@
     function InsertPrompt() {
         var MessageCount = [].slice.call(document.getElementsByClassName("message_item")).length;
 
-        for (var index = 0; index < MessageCount; index++) {
+        for (let index = 0; index < MessageCount; index++) {
             var div = document.createElement('div');
             div.setAttribute("style", "text-align:center;cursor:pointer;");
-            div.addEventListener("click", "GenerateHTML(" + index + ")");
+            div.addEventListener("click", function () { GenerateHTML(index) });
             div.innerHTML = '汇总以上内容';
             document.getElementsByClassName("message_item")[index].parentNode.insertBefore(div, document.getElementsByClassName("message_item")[index].nextSibling);
         }
