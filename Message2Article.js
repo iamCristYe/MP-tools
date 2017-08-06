@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Message2Article
-// @namespace    http://iamCristYe.GitHub.io
-// @version      1.0
+// @namespace    https://github.com/iamCristYe/MP-tools
+// @version      1501980136.0
 // @description  Automatically build article from messages.
 // @author       Crist
 // @match        https://mp.weixin.qq.com/cgi-bin/message?*
