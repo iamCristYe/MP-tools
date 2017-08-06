@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Message2Article
 // @namespace    https://github.com/iamCristYe/MP-tools
-// @version      9.0
+// @version      10.0
 // @description  Automatically build article from messages.
 // @author       Crist
 // @match        https://mp.weixin.qq.com/cgi-bin/message?*
@@ -25,7 +25,7 @@
         window.location.href = "https://mp.weixin.qq.com/cgi-bin/message?t=message/list&count=1000&day=7&token=" + getParameterByName('token');
     }
 
-    unsafeWindow.GenerateHTML(DesiredMessageLength) {
+    function GenerateHTML(DesiredMessageLength) {
         var MessageArray = [].slice.call(document.getElementsByClassName("message_item"));
         var resultArray = [];
         for (var index = 0; index <= DesiredMessageLength; index++) {
@@ -80,18 +80,16 @@
     }
 
     function InsertPrompt() {
-        clearInterval(myInterval);
-
         var MessageCount = [].slice.call(document.getElementsByClassName("message_item")).length;
 
         for (var index = 0; index < MessageCount; index++) {
             var div = document.createElement('div');
-            div.setAttribute(style, "text-align:center;cursor:pointer;");
-            div.setAttribute(onClick, "GenerateHTML(" + index + ")");
+            div.setAttribute("style", "text-align:center;cursor:pointer;");
+            div.addEventListener("click", "GenerateHTML(" + index + ")");
             div.innerHTML = '汇总以上内容';
             document.getElementsByClassName("message_item")[index].parentNode.insertBefore(div, document.getElementsByClassName("message_item")[index].nextSibling);
         }
     }
 
-    var myInterval = setInterval(() => { InsertPrompt(); }, 2000); //wait till all messages loaded
+    setTimeout(() => { InsertPrompt(); }, 2000); //wait till all messages loaded
 })();
