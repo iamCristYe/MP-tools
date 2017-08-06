@@ -25,11 +25,17 @@
         switch (document.getElementsByClassName('jsNewElect').length) {
             case 0:
                 console.log("No comment to be elected.");
+
                 setInterval(() => {
                     if (document.getElementById("js_div_newnum").style.display == "block") {
                         location.reload();
                     }
-                }, 2000);
+                }, 1000);
+
+                setInterval(() => {
+                    location.reload();         //in case of no activity log out          
+                }, 900000);
+
                 break;
             case 1:
                 eventFire(document.getElementsByClassName('jsNewElect')[0], 'click');
