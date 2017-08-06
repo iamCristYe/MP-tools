@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         ElectComment
 // @namespace    https://github.com/iamCristYe/MP-tools
-// @version      3.0
+// @version      4.0
 // @description  Automatically elect new comments.
 // @author       Crist
 // @match        https://mp.weixin.qq.com/misc/appmsgcomment?action=list_latest_comment*
