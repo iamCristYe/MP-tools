@@ -83,5 +83,5 @@
         win.document.body.innerHTML = newHTML;
     }
 
-    var myInterval = setInterval(() => { Message2Article(); }, 10000);
+    var myInterval = setInterval(() => { Message2Article(); }, 3000);
 })();
