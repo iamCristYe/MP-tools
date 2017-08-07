@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Message2Article
 // @namespace    https://github.com/iamCristYe/MP-tools
-// @version      12.0
+// @version      13.0
 // @description  Automatically build article from messages.
 // @author       Crist
 // @match        https://mp.weixin.qq.com/cgi-bin/message?*
@@ -32,10 +32,10 @@
             var tmp = {};
 
             //get UserID
-            if (MessageArray[index].getElementsByTagName("a").length == 9) {          //for images
+            if (MessageArray[index].getElementsByTagName("a").length == 9) {                //for images
                 tmp.UserID = MessageArray[index].getElementsByTagName("a")[4].getAttribute("data-fakeid");
             }
-            else {       //for texts and expired image
+            else {                                                                          //for texts and expired images
                 tmp.UserID = MessageArray[index].getElementsByTagName("a")[2].getAttribute("data-fakeid");
             }
             //tmp.UserName = MessageArray[index].getElementsByTagName("a")[2].innerText;
