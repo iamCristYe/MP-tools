@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         ElectComment
 // @namespace    https://github.com/iamCristYe/MP-tools
-// @version      7.0
+// @version      8.0
 // @description  Automatically elect new comments.
 // @author       Crist
 // @match        https://mp.weixin.qq.com/misc/appmsgcomment?action=list_latest_comment*
@@ -22,11 +22,10 @@
     }
 
     function Elect() {
-        if (document.getElementsByClassName('jsNewElect').length) {                                         //comment(s) to be elcted exist(s)
+        if (document.getElementsByClassName('jsNewElect').length) {                                         //comments to be elected exist
             eventFire(document.getElementsByClassName('jsNewElect')[0], 'click');
             window.setTimeout(Elect, 2000);
-        } else {
-            console.log("No comment to be elected.");
+        } else {                                                                                            //no comments to be elected
             setInterval(() => {
                 if (document.getElementById("js_div_newnum").style.display == "block") location.reload();   //new comment appears
             }, 1000);
