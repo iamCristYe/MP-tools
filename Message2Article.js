@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Message2Article
 // @namespace    https://github.com/iamCristYe/MP-tools
-// @version      11.0
+// @version      12.0
 // @description  Automatically build article from messages.
 // @author       Crist
 // @match        https://mp.weixin.qq.com/cgi-bin/message?*
@@ -28,7 +28,7 @@
     function GenerateHTML(DesiredMessageLength) {
         var MessageArray = [].slice.call(document.getElementsByClassName("message_item"));
         var resultArray = [];
-        for (var index = 0; index <= DesiredMessageLength; index++) {
+        for (let index = 0; index <= DesiredMessageLength; index++) {
             var tmp = {};
 
             //get UserID
@@ -47,7 +47,7 @@
             if (tmp.Message === "") tmp.Message = "(expired image)";
 
             //get image URL
-            if (MessageArray[index].getElementsByClassName("appmsgSendedItem")[0] != null)
+            if (MessageArray[index].getElementsByClassName("appmsgSendedItem")[0] !== undefined)
                 tmp.pic = "https://mp.weixin.qq.com" + MessageArray[index].getElementsByClassName("appmsgSendedItem")[0].getElementsByTagName("a")[0].getAttribute("href");
 
             resultArray.push(tmp);
@@ -68,10 +68,10 @@
         });
 
         var newHTML = ""; var lastUser = resultArray[0].UserID;
-        for (var index = 0; index < resultArray.length; index++) {
+        for (let index = 0; index < resultArray.length; index++) {
             if (resultArray[index].UserID != lastUser) newHTML += "------<br>"; lastUser = resultArray[index].UserID;
 
-            if (resultArray[index].pic != null) newHTML += "<img src=" + resultArray[index].pic + "><br>";
+            if (resultArray[index].pic !== undefined) newHTML += "<img src=" + resultArray[index].pic + "><br>";
             else newHTML += resultArray[index].Message + "<br>";
         }
 
@@ -85,7 +85,7 @@
         for (let index = 0; index < MessageCount; index++) {
             var div = document.createElement('div');
             div.setAttribute("style", "text-align:center;cursor:pointer;");
-            div.addEventListener("click", function () { GenerateHTML(index) });
+            div.addEventListener("click", function () { GenerateHTML(index); });
             div.innerHTML = '汇总以上内容';
             document.getElementsByClassName("message_item")[index].parentNode.insertBefore(div, document.getElementsByClassName("message_item")[index].nextSibling);
         }
