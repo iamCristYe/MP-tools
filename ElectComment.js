@@ -11,19 +11,9 @@
 (function () {
     'use strict';
 
-    function eventFire(el, etype) {
-        if (el.fireEvent) {
-            el.fireEvent('on' + etype);
-        } else {
-            var evObj = document.createEvent('Events');
-            evObj.initEvent(etype, true, false);
-            el.dispatchEvent(evObj);
-        }
-    }
-
     function Elect() {
         if (document.getElementsByClassName('jsNewElect').length) {                                         //comments to be elected exist
-            eventFire(document.getElementsByClassName('jsNewElect')[0], 'click');
+            document.getElementsByClassName('jsNewElect')[0].click();
             window.setTimeout(Elect, 2000);
         } else {                                                                                            //no comments to be elected
             setInterval(() => {
