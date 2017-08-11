@@ -14,7 +14,7 @@
     function Elect() {
         if (document.getElementsByClassName('jsNewElect').length) {                                         //comments to be elected exist
             document.getElementsByClassName('jsNewElect')[0].click();
-            window.setTimeout(Elect, 2000);
+            setTimeout(Elect, 2000);
         } else {                                                                                            //no comments to be elected
             setInterval(() => {
                 if (document.getElementById("js_div_newnum").style.display == "block") location.reload();   //new comment appears
@@ -25,5 +25,5 @@
         }
     }
 
-    setTimeout(() => { Elect(); }, 5000);
+    setTimeout(Elect, 5000);
 })();
