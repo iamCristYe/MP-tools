@@ -7,9 +7,13 @@
 // @downloadURL  https://iamCristYe.GitHub.io/MP-tools/ElectComment.js
 // @description  Automatically elect new comments.
 // @author       Crist
+// @inclode      https://mp.weixin.qq.com/misc/appmsgcomment?action=list_latest_comment*
 // @match        https://mp.weixin.qq.com/misc/appmsgcomment?action=list_latest_comment*
 // @grant        none
 // ==/UserScript==
+
+
+
 
 
 (function () {
