@@ -3,8 +3,8 @@
 // @name         ElectComment
 // @namespace    https://iamCristYe.GitHub.io/MP-tools/ElectComment
 // @version      11.0
-// @updateURL    https://iamCristYe.GitHub.io/MP-tools/ElectComment.js
-// @downloadURL  https://iamCristYe.GitHub.io/MP-tools/ElectComment.js
+// @updateURL    https://iamCristYe.GitHub.io/MP-tools/ElectComment.user.js
+// @downloadURL  https://iamCristYe.GitHub.io/MP-tools/ElectComment.user.js
 // @description  Automatically elect new comments.
 // @author       Crist
 // @include      https://mp.weixin.qq.com/misc/appmsgcomment?action=list_latest_comment*
